@@ -1,2 +1,2 @@
-# survey-feedback-platform
+# Survey-Feedback-Platform
 Full-stack feedback collection platform with Google OAuth, Stripe payments, email campaigns and survey analytics.
