@@ -11,7 +11,6 @@ A platform built using Node.js, Express, React, MongoDB, Passport.js and Stripe.
 - User authentication using Passport.js
 - Backend deployment using Render
 - MongoDB integration
-- REST API architecture
 
 ## Tech Stack
 
