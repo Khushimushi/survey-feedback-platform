@@ -1,9 +1,7 @@
 # Survey-Feedback-Platform
+
 Full-stack feedback collection platform with Google OAuth, Stripe payments, email campaigns and survey analytics.
-
-# Survey Feedback Platform
-
-A full-stack feedback collection platform built using Node.js, Express, React, MongoDB, Passport.js, and Stripe.
+A platform built using Node.js, Express, React, MongoDB, Passport.js and Stripe.
 
 ## Features
 
