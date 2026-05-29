@@ -1,6 +1,6 @@
 # Survey Feedback Platform
 
-A full-stack web application for creating and managing feedback/survey campaigns. The project is being built using the MERN stack and integrates Google OAuth authentication, MongoDB Atlas, and modern deployment practices.
+A full-stack web application for creating and managing feedback/survey campaigns. The project is being built using the MERN stack and integrates Google OAuth authentication, MongoDB Atlas and modern deployment practices.
 
 ## Features Implemented
 
