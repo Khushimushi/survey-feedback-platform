@@ -134,6 +134,3 @@ COOKIE_KEY=
 ## Deployment
 
 The application is configured for deployment using Render and MongoDB Atlas.
-
-```
-```
