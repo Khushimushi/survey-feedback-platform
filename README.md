@@ -1,6 +1,6 @@
 # Survey Feedback Platform
 
-A full-stack web application for creating and managing feedback/survey campaigns. The project is being built using the MERN stack and integrates Google OAuth authentication, MongoDB Atlas and modern deployment practices.
+A full-stack web application for creating and managing feedback and survey campaigns. The project is being developed using the MERN stack and integrates Google OAuth authentication, MongoDB Atlas, Redux state management and modern deployment practices.
 
 ## Features Implemented
 
@@ -11,6 +11,11 @@ A full-stack web application for creating and managing feedback/survey campaigns
 * Authentication routes for login, logout, and current user retrieval
 * Development and Production environment configuration
 * React frontend setup
+* Redux state management
+* Redux Thunk middleware integration
+* React Router navigation
+* Current user authentication state management
+* Materialize CSS integration
 * Frontend-Backend proxy configuration
 * Render deployment configuration
 
@@ -21,13 +26,18 @@ A full-stack web application for creating and managing feedback/survey campaigns
 * Stripe payment integration
 * Survey response collection
 * Survey analytics dashboard
-* User billing system
+* User billing and credit system
+* Campaign performance tracking
 
 ## Tech Stack
 
 ### Frontend
 
 * React
+* React Router
+* Redux
+* Redux Thunk
+* Materialize CSS
 * JavaScript
 * Create React App
 
@@ -48,17 +58,24 @@ A full-stack web application for creating and managing feedback/survey campaigns
 
 * Render
 * GitHub
+* Git
+* VS Code
 
 ## Project Structure
 
 ```text
 server/
 ├── client/
+│   └── src/
+│       ├── actions/
+│       ├── components/
+│       ├── reducers/
+│       └── index.js
 ├── config/
 ├── models/
 ├── routes/
 ├── services/
-├── index.js
+└── index.js
 ```
 
 ## Authentication Routes
@@ -100,17 +117,11 @@ npm install
 npm run dev
 ```
 
-### Backend Only
-
-```bash
-node index.js
-```
+This command starts both the Express backend server and React frontend development server concurrently.
 
 ## Environment Variables
 
-The project uses separate development and production configurations.
-
-Required environment variables:
+Create a `dev.js` file inside the `config` folder for local development and configure the following variables:
 
 ```env
 GOOGLE_CLIENT_ID=
@@ -119,18 +130,38 @@ MONGO_URI=
 COOKIE_KEY=
 ```
 
+For production deployment, these values should be stored as environment variables in the hosting platform.
+
 ## Current Progress
 
-* Express backend setup completed
+* Express backend architecture completed
 * MongoDB Atlas integration completed
 * Passport.js authentication implemented
 * Google OAuth login flow implemented
 * Session and cookie management configured
-* React frontend integrated
-* Development/Production environment separation completed
+* React frontend architecture implemented
+* Redux store and reducers configured
+* Redux Thunk middleware integrated
+* React Router navigation configured
+* Header component and authentication UI implemented
+* Current user fetching and state management implemented
+* Development and Production environment separation completed
 * Render deployment configured
 * Frontend-Backend proxy setup completed
 
 ## Deployment
 
 The application is configured for deployment using Render and MongoDB Atlas.
+
+## Future Enhancements
+
+* Survey creation workflow
+* Email campaign management
+* Stripe billing integration
+* User credits system
+* Survey analytics and reporting
+* Responsive dashboard and user interface
+
+## License
+
+This project is being developed for learning full-stack web development and modern MERN application architecture.
