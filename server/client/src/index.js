@@ -6,6 +6,10 @@ import { createStore, applyMiddleware } from 'redux';
 import reducers from './reducers';
 import reduxThunk from 'redux-thunk';
 
+//Development only 
+import axios from 'axios';
+window.axios = axios;
+
 const el = document.getElementById('root');
 const root = ReactDOM.createRoot(el);
 const store = createStore (reducers, {}, applyMiddleware(reduxThunk));
