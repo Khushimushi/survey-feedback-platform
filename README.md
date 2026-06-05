@@ -1,49 +1,64 @@
 # Survey Feedback Platform
 
-A full-stack survey and feedback collection platform built using the MERN stack. The application allows authenticated users to create email-based surveys, manage credits, distribute surveys through SendGrid and collect responses.
+A full-stack survey and feedback collection platform built using the MERN stack. The application allows users to authenticate with Google, purchase credits, create email-based surveys, distribute them through SendGrid, track responses using webhooks and view survey statistics through a dashboard.
 
-## Features Implemented
+## Features
 
 ### Authentication & User Management
 
-- Google OAuth authentication using Passport.js
-- Session management with Cookie Session
-- Persistent user login state
-- Current user retrieval API
-- Logout functionality
+* Google OAuth Authentication using Passport.js
+* Cookie-based session management
+* Persistent login state
+* User profile retrieval
+* Secure logout functionality
 
 ### Billing System
 
-- Stripe billing integration setup
-- Credit-based survey creation system
-- User credit tracking
-- Protected routes requiring available credits
+* Stripe payment integration
+* Credit-based survey creation
+* User credit tracking and updates
+* Credit validation middleware
 
 ### Survey Management
 
-- Survey creation workflow
-- Multi-step survey form with review screen
-- Form validation using Redux Form
-- Email recipient validation
-- Survey data storage using MongoDB
-- Survey ownership tracking
-- Credit verification before survey creation
+* Multi-step survey creation workflow
+* Dynamic form generation using Redux Form
+* Form validation and email validation
+* Survey review page before submission
+* Survey storage using MongoDB
+* Survey ownership tracking
 
 ### Email Infrastructure
 
-- SendGrid integration
-- Custom Mailer service
-- Survey email template generation
-- Recipient management using subdocuments
-- Verified sender configuration
+* SendGrid integration
+* Custom Mailer service
+* Dynamic survey email generation
+* Recipient management using subdocuments
+* Verified sender configuration
+
+### Response Tracking
+
+* SendGrid Event Webhooks integration
+* Ngrok-based local webhook testing
+* Survey response tracking
+* Duplicate response prevention
+* Automatic vote counting (Yes / No)
+* Recipient response status updates
+
+### Dashboard
+
+* Survey listing page
+* Survey statistics display
+* Response count tracking
+* Survey creation date display
+* User-specific survey retrieval
 
 ### Deployment
 
-- Render deployment configuration
-- Production Express + React integration
-- Production routing support
-- Environment-based configuration
-- MongoDB Atlas integration
+* Render deployment configuration
+* Production Express + React integration
+* MongoDB Atlas integration
+* Environment-based configuration management
 
 ---
 
@@ -51,33 +66,34 @@ A full-stack survey and feedback collection platform built using the MERN stack.
 
 ### Frontend
 
-- React
-- Redux
-- Redux Thunk
-- Redux Form
-- React Router
-- Materialize CSS
-- Axios
+* React
+* Redux
+* Redux Thunk
+* Redux Form
+* React Router
+* Axios
+* Materialize CSS
 
 ### Backend
 
-- Node.js
-- Express.js
-- Passport.js
-- Cookie Session
-- Body Parser
+* Node.js
+* Express.js
+* Passport.js
+* Cookie Session
+* Lodash
 
 ### Database
 
-- MongoDB Atlas
-- Mongoose
+* MongoDB Atlas
+* Mongoose
 
 ### External Services
 
-- Google OAuth 2.0
-- Stripe
-- SendGrid
-- Render
+* Google OAuth 2.0
+* Stripe
+* SendGrid
+* Ngrok
+* Render
 
 ---
 
@@ -86,21 +102,22 @@ A full-stack survey and feedback collection platform built using the MERN stack.
 ```text
 server/
 ├── client/
-│   ├── src/
-│   │   ├── actions/
-│   │   ├── components/
-│   │   ├── reducers/
-│   │   └── utils/
-│   └── public/
+│   ├── public/
+│   └── src/
+│       ├── actions/
+│       ├── components/
+│       ├── reducers/
+│       └── utils/
 ├── config/
 ├── middlewares/
 ├── models/
 ├── routes/
 ├── services/
+│   └── emailTemplates/
 └── index.js
 ```
 
-## Implemented Routes
+## Implemented API Routes
 
 ### Authentication
 
@@ -120,8 +137,10 @@ server/
 ### Surveys
 
 ```text
-/api/surveys
-/api/surveys/thanks
+GET  /api/surveys
+POST /api/surveys
+POST /api/surveys/webhooks
+GET  /api/surveys/:surveyId/:choice
 ```
 
 ---
@@ -135,15 +154,13 @@ git clone https://github.com/Khushimushi/survey-feedback-platform.git
 cd survey-feedback-platform/server
 ```
 
-### Install Dependencies
-
-Backend:
+### Install Backend Dependencies
 
 ```bash
 npm install
 ```
 
-Frontend:
+### Install Frontend Dependencies
 
 ```bash
 cd client
@@ -166,15 +183,24 @@ npm run dev
 node index.js
 ```
 
+### Ngrok (Webhook Testing)
+
+```bash
+ngrok http 5000
+```
+
 ---
 
 ## Environment Variables
+
+Create appropriate development and production environment files.
 
 Required variables:
 
 ```env
 GOOGLE_CLIENT_ID=
 GOOGLE_CLIENT_SECRET=
+
 COOKIE_KEY=
 MONGO_URI=
 
@@ -189,37 +215,43 @@ REDIRECT_DOMAIN=
 
 ## Current Progress
 
-- Authentication system completed
-- MongoDB integration completed
-- Redux and Redux Form configured
-- Survey creation workflow completed
-- Survey review page completed
-- Email validation implemented
-- SendGrid integration configured
-- Billing and credits system implemented
-- Render deployment configured
-- Production routing implemented
+* Authentication system completed
+* Google OAuth integration completed
+* Stripe billing integration completed
+* Credit management implemented
+* Survey creation workflow completed
+* Redux Form integration completed
+* Email validation implemented
+* SendGrid integration completed
+* Survey email generation completed
+* Webhook processing implemented
+* Survey response tracking completed
+* Dashboard and survey listing completed
+* MongoDB Atlas integration completed
+* Render deployment configured
 
 ---
 
-## Planned Features
+## Future Improvements
 
-- Survey email delivery
-- Survey response tracking
-- Webhook processing
-- Survey analytics dashboard
-- Response statistics
-- Survey management interface
+* Survey analytics dashboard with charts
+* Survey deletion functionality
+* Survey editing functionality
+* User profile management
+* Improved email templates
+* Advanced response analytics
+* Pagination for survey listings
 
 ---
 
 ## Deployment
 
-The application is deployed using:
+The application is configured for deployment using:
 
-- Render
-- MongoDB Atlas
-- Google OAuth
-- SendGrid
+* Render
+* MongoDB Atlas
+* Google OAuth
+* Stripe
+* SendGrid
 
 ---
