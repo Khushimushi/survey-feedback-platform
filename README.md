@@ -1,84 +1,108 @@
 # Survey Feedback Platform
 
-A full-stack web application for creating and managing feedback and survey campaigns. The project is being developed using the MERN stack and integrates Google OAuth authentication, MongoDB Atlas, Redux state management and modern deployment practices.
+A full-stack survey and feedback collection platform built using the MERN stack. The application allows authenticated users to create email-based surveys, manage credits, distribute surveys through SendGrid and collect responses.
 
 ## Features Implemented
 
-* Google OAuth Authentication using Passport.js
-* User session management using cookies
-* MongoDB Atlas integration
-* User data storage using Mongoose
-* Authentication routes for login, logout, and current user retrieval
-* Development and Production environment configuration
-* React frontend setup
-* Redux state management
-* Redux Thunk middleware integration
-* React Router navigation
-* Current user authentication state management
-* Materialize CSS integration
-* Frontend-Backend proxy configuration
-* Render deployment configuration
+### Authentication & User Management
 
-## Features Planned
+- Google OAuth authentication using Passport.js
+- Session management with Cookie Session
+- Persistent user login state
+- Current user retrieval API
+- Logout functionality
 
-* Survey creation and management
-* Email-based survey distribution
-* Stripe payment integration
-* Survey response collection
-* Survey analytics dashboard
-* User billing and credit system
-* Campaign performance tracking
+### Billing System
+
+- Stripe billing integration setup
+- Credit-based survey creation system
+- User credit tracking
+- Protected routes requiring available credits
+
+### Survey Management
+
+- Survey creation workflow
+- Multi-step survey form with review screen
+- Form validation using Redux Form
+- Email recipient validation
+- Survey data storage using MongoDB
+- Survey ownership tracking
+- Credit verification before survey creation
+
+### Email Infrastructure
+
+- SendGrid integration
+- Custom Mailer service
+- Survey email template generation
+- Recipient management using subdocuments
+- Verified sender configuration
+
+### Deployment
+
+- Render deployment configuration
+- Production Express + React integration
+- Production routing support
+- Environment-based configuration
+- MongoDB Atlas integration
+
+---
 
 ## Tech Stack
 
 ### Frontend
 
-* React
-* React Router
-* Redux
-* Redux Thunk
-* Materialize CSS
-* JavaScript
-* Create React App
+- React
+- Redux
+- Redux Thunk
+- Redux Form
+- React Router
+- Materialize CSS
+- Axios
 
 ### Backend
 
-* Node.js
-* Express.js
-* Passport.js
-* Google OAuth 2.0
-* Cookie Session
+- Node.js
+- Express.js
+- Passport.js
+- Cookie Session
+- Body Parser
 
 ### Database
 
-* MongoDB Atlas
-* Mongoose
+- MongoDB Atlas
+- Mongoose
 
-### Deployment & Tools
+### External Services
 
-* Render
-* GitHub
-* Git
-* VS Code
+- Google OAuth 2.0
+- Stripe
+- SendGrid
+- Render
+
+---
 
 ## Project Structure
 
 ```text
 server/
 ├── client/
-│   └── src/
-│       ├── actions/
-│       ├── components/
-│       ├── reducers/
-│       └── index.js
+│   ├── src/
+│   │   ├── actions/
+│   │   ├── components/
+│   │   ├── reducers/
+│   │   └── utils/
+│   └── public/
 ├── config/
+├── middlewares/
 ├── models/
 ├── routes/
 ├── services/
 └── index.js
 ```
 
-## Authentication Routes
+## Implemented Routes
+
+### Authentication
 
 ```text
 /auth/google
@@ -87,27 +111,46 @@ server/
 /api/logout
 ```
 
+### Billing
+
+```text
+/api/stripe
+```
+
+### Surveys
+
+```text
+/api/surveys
+/api/surveys/thanks
+```
+
+---
+
 ## Installation
 
 ### Clone Repository
 
 ```bash
-git clone <repository-url>
+git clone https://github.com/Khushimushi/survey-feedback-platform.git
 cd survey-feedback-platform/server
 ```
 
-### Install Backend Dependencies
+### Install Dependencies
+
+Backend:
 
 ```bash
 npm install
 ```
 
-### Install Frontend Dependencies
+Frontend:
 
 ```bash
 cd client
 npm install
 ```
+
+---
 
 ## Running the Application
 
@@ -117,51 +160,66 @@ npm install
 npm run dev
 ```
 
-This command starts both the Express backend server and React frontend development server concurrently.
+### Backend Only
+
+```bash
+node index.js
+```
+
+---
 
 ## Environment Variables
 
-Create a `dev.js` file inside the `config` folder for local development and configure the following variables:
+Required variables:
 
 ```env
 GOOGLE_CLIENT_ID=
 GOOGLE_CLIENT_SECRET=
-MONGO_URI=
 COOKIE_KEY=
+MONGO_URI=
+
+STRIPE_SECRET_KEY=
+REACT_APP_STRIPE_KEY=
+
+SEND_GRID_KEY=
+REDIRECT_DOMAIN=
 ```
 
-For production deployment, these values should be stored as environment variables in the hosting platform.
+---
 
 ## Current Progress
 
-* Express backend architecture completed
-* MongoDB Atlas integration completed
-* Passport.js authentication implemented
-* Google OAuth login flow implemented
-* Session and cookie management configured
-* React frontend architecture implemented
-* Redux store and reducers configured
-* Redux Thunk middleware integrated
-* React Router navigation configured
-* Header component and authentication UI implemented
-* Current user fetching and state management implemented
-* Development and Production environment separation completed
-* Render deployment configured
-* Frontend-Backend proxy setup completed
+- Authentication system completed
+- MongoDB integration completed
+- Redux and Redux Form configured
+- Survey creation workflow completed
+- Survey review page completed
+- Email validation implemented
+- SendGrid integration configured
+- Billing and credits system implemented
+- Render deployment configured
+- Production routing implemented
+
+---
+
+## Planned Features
+
+- Survey email delivery
+- Survey response tracking
+- Webhook processing
+- Survey analytics dashboard
+- Response statistics
+- Survey management interface
+
+---
 
 ## Deployment
 
-The application is configured for deployment using Render and MongoDB Atlas.
+The application is deployed using:
 
-## Future Enhancements
+- Render
+- MongoDB Atlas
+- Google OAuth
+- SendGrid
 
-* Survey creation workflow
-* Email campaign management
-* Stripe billing integration
-* User credits system
-* Survey analytics and reporting
-* Responsive dashboard and user interface
-
-## License
-
-This project is being developed for learning full-stack web development and modern MERN application architecture.
+---
